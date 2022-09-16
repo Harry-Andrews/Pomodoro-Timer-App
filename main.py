@@ -1,5 +1,6 @@
 from tkinter import *
 import math
+from pygame import mixer
 
 # ---------------------------- CONSTANTS ------------------------------- #
 PINK = "#e2979c"
@@ -13,6 +14,16 @@ LONG_BREAK_MIN = 20
 reps = 0
 check_marks = ""
 reset = False
+
+# ------------------------- DING NOTIFICATION ---------------------------- #
+
+mixer.init()
+mixer.music.load("ding.mp3")
+
+
+def ding():
+    mixer.music.play()
+    mixer.music.play(loops=0)
 
 
 # ---------------------------- TIMER RESET ------------------------------- #
@@ -28,7 +39,7 @@ def reset_timer():
     check_marks = ""
 
 
-# ---------------------------- TIMER MECHANISM ------------------------------- # 
+# --------------------------- TIMER MECHANISM ------------------------------ #
 def start_timer():
     global reps
     global reset
@@ -38,6 +49,7 @@ def start_timer():
     long_break_seconds = LONG_BREAK_MIN * 60
 
     reps += 1
+    ding()
     if reps % 2 == 1:
         timer_label.config(text="Work", fg=GREEN)
         count_down(work_seconds)
@@ -82,7 +94,7 @@ canvas.grid(row=1, column=1)
 
 timer_label = Label(text="Timer", fg=GREEN, font=(FONT_NAME, 35, "bold"), bg=YELLOW, pady=10)
 timer_label.grid(row=0, column=1)
-check_mark_label = Label(text="", fg=GREEN, bg=YELLOW)
+check_mark_label = Label(text="", fg=GREEN, bg=YELLOW, font=(FONT_NAME, 35, "bold"))
 check_mark_label.grid(row=4, column=1)
 
 start_button_img = PhotoImage(file="start_button.png")
