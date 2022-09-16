@@ -1,4 +1,4 @@
-from tkinter import *
+import tkinter as tk
 import math
 from pygame import mixer
 
@@ -81,29 +81,29 @@ def count_down(count):
 
 
 # ---------------------------- UI SETUP ------------------------------- #
-window = Tk()
+window = tk.Tk()
 window.title("Pomodoro")
 window.config(padx=100, pady=50, bg=YELLOW, highlightthickness=0)
 
-canvas = Canvas(width=200, height=224, bg=YELLOW)
-tomato_img = PhotoImage(file="tomato.png")
+canvas = tk.Canvas(width=200, height=224, bg=YELLOW)
+tomato_img = tk.PhotoImage(file="tomato.png")
 canvas.create_image(100, 112, image=tomato_img)
 timer_text = canvas.create_text(100,
                                 130, text="00:00", fill="white", font=(FONT_NAME, 35, "bold"))
 canvas.grid(row=1, column=1)
 
-timer_label = Label(text="Timer", fg=GREEN, font=(FONT_NAME, 35, "bold"), bg=YELLOW, pady=10)
+timer_label = tk.Label(text="Timer", fg=GREEN, font=(FONT_NAME, 35, "bold"), bg=YELLOW, pady=10)
 timer_label.grid(row=0, column=1)
-check_mark_label = Label(text="", fg=GREEN, bg=YELLOW, font=(FONT_NAME, 35, "bold"))
+check_mark_label = tk.Label(text="", fg=GREEN, bg=YELLOW, font=(FONT_NAME, 35, "bold"))
 check_mark_label.grid(row=4, column=1)
 
-start_button_img = PhotoImage(file="start_button.png")
+start_button_img = tk.PhotoImage(file="start_button.png")
 # This image was taken from the author FreePik on flaticon.com
-start_button = Button(highlightthickness=0, image=start_button_img, borderwidth=0, bg=YELLOW, command=start_timer)
+start_button = tk.Button(highlightthickness=0, image=start_button_img, borderwidth=0, bg=YELLOW, command=start_timer)
 start_button.grid(row=3, column=0)
-reset_button_img = PhotoImage(file="reset_button.png")
+reset_button_img = tk.PhotoImage(file="reset_button.png")
 # This image was taken from the author FreePik on flaticon.com
-reset_button = Button(highlightthickness=0, image=reset_button_img, borderwidth=0, bg=YELLOW, command=reset_timer)
+reset_button = tk.Button(highlightthickness=0, image=reset_button_img, borderwidth=0, bg=YELLOW, command=reset_timer)
 reset_button.grid(row=3, column=2)
 
 window.mainloop()
